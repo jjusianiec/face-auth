@@ -1,8 +1,9 @@
 const serverless = require('serverless-http');
 const express = require('express');
 const AWS = require('aws-sdk');
+const config = require('./config/config');
 
-const rekognition = new AWS.Rekognition({ apiVersion: '2016-06-27' });
+const rekognition = new AWS.Rekognition({ apiVersion: config.rekognitionVersion });
 
 const app = express();
 
