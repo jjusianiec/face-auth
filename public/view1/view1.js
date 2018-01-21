@@ -31,7 +31,7 @@ angular.module('myApp.view1', ['ngRoute'])
       hiddenCanvas.height = video.height;
       const ctx = hiddenCanvas.getContext('2d');
       ctx.drawImage(video, 0, 0, video.width, video.height);
-      $http.post('/login', { image: ctx.getImageData(x, y, w, h) })
+      $http.post('/login', { image: hiddenCanvas.toDataURL() })
         .then((data) => {
 
         }).catch((err) => {

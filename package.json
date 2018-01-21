@@ -27,6 +27,7 @@
     "serverless-offline": "^3.16.0"
   },
   "dependencies": {
+    "atob": "^2.0.3",
     "aws-sdk": "^2.185.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
