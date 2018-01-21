@@ -20,6 +20,7 @@ service: face-auth # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs6.10
+  region: eu-west-1
 
 # you can overwrite defaults here
 #  stage: dev
@@ -104,17 +105,6 @@ resources:
      NewOutput:
        Description: "Description for the output"
        Value: "Some output value"
-
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
 
 plugins:
   - serverless-offline

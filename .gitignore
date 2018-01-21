@@ -7,3 +7,5 @@ jspm_packages
 \.idea/dictionaries/
 
 \.idea/
+
+public/bower_components

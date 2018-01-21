@@ -1,0 +1,17 @@
+<div>
+    <div class="video-container">
+        <br>
+        Add new user
+        <br>
+        <webcam on-stream="onStream(stream)"
+                on-access-denied="onError(err)"
+                on-streaming="onSuccess()"
+                channel="channel">
+        </webcam>
+        <br>
+        <input type="text" ng-model="userName">
+        <br>
+        <button class="btn btn-success" ng-click="getVideoData(0, 0, 800, 600)">Register</button>
+    </div>
+
+</div>

@@ -1,3 +1,5 @@
 {
-  "rekognitionVersion": "2016-06-27"
+  "rekognitionVersion": "2016-06-27",
+  "region": "us-east-1",
+  "collectionId": "face-db"
 }
