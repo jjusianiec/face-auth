@@ -94,17 +94,23 @@ functions:
 #    environment:
 #      variable2: value2
 
-# you can add CloudFormation resource templates here
+# https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html
 resources:
   Resources:
-    NewResource:
-      Type: AWS::S3::Bucket
+    user:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Delete
       Properties:
-        BucketName: my-new-bucket
-  Outputs:
-     NewOutput:
-       Description: "Description for the output"
-       Value: "Some output value"
+        TableName: user
+        AttributeDefinitions:
+          - AttributeName: name
+            AttributeType: S
+          - AttributeName: faceId
+            Attributetype: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
 
 plugins:
   - serverless-offline
+  - serverless-dynamodb-local

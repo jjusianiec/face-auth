@@ -35,7 +35,7 @@ angular.module('myApp.view2', ['ngRoute'])
         $scope.channel.video, 0, 0, $scope.channel.video.width,
         $scope.channel.video.height,
       );
-      $http.post('/register', {
+      $http.post('/rest/register', {
         image: hiddenCanvas.toDataURL(),
         name: $scope.userName,
       })

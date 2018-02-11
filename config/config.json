@@ -1,5 +1,6 @@
 {
   "rekognitionVersion": "2016-06-27",
   "region": "us-east-1",
-  "collectionId": "face-db"
+  "collectionId": "face-db",
+  "faceMatchThreshold": 95
 }
