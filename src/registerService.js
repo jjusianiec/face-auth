@@ -4,7 +4,6 @@ const AWS = require('./awsProvider');
 
 const rekognition = new AWS.Rekognition({ apiVersion: config.rekognitionVersion });
 
-
 module.exports = (req, res) => {
   const params = {
     CollectionId: config.collectionId,
