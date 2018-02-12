@@ -103,14 +103,25 @@ resources:
       Properties:
         TableName: user
         AttributeDefinitions:
-          - AttributeName: name
-            AttributeType: S
           - AttributeName: faceId
-            Attributetype: S
+            AttributeType: S
         KeySchema:
-          - AttributeName: id
+          - AttributeName: faceId
             KeyType: HASH
+        ProvisionedThroughput:
+          WriteCapacityUnits: 1
+          ReadCapacityUnits: 1
 
 plugins:
   - serverless-offline
   - serverless-dynamodb-local
+
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+    # Uncomment only if you already have a DynamoDB running locally
+    # noStart: true
