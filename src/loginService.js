@@ -1,10 +1,11 @@
 const config = require('../config/config');
 const base64ImageToAWSCompatibleFormat = require('./base64ImageToAWSCompatibleFormat');
 const AWS = require('./awsProvider');
+const userRepository = require('./userRepository');
 
 const rekognition = new AWS.Rekognition({ apiVersion: config.rekognitionVersion });
 
-const login = (image) => {
+const login = async (image) => {
   const params = {
     CollectionId: config.collectionId,
     FaceMatchThreshold: config.faceMatchThreshold,
@@ -13,11 +14,14 @@ const login = (image) => {
     },
     MaxFaces: 1,
   };
-  return rekognition.searchFacesByImage(params).promise();
-  //   , (err, data) => {
-  //   if (err) res.status(500).send(err).end();
-  //   else res.status(200).send(data).end();
-  // });
+  const searchByFaceResult = await rekognition.searchFacesByImage(params).promise();
+  if (searchByFaceResult.FaceMatches.length === 0) {
+    throw {
+      status: 404,
+      message: 'Could not find user with given face',
+    };
+  }
+  return userRepository.findByFaceId(searchByFaceResult.FaceMatches[0].FaceId);
 };
 
 module.exports = {

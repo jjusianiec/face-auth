@@ -5,10 +5,15 @@ const loginService = require('./loginService');
 const HTTPStatus = require('http-status-codes');
 const userRepository = require('./userRepository');
 
-const rekognition = new AWS.Rekognition({apiVersion: config.rekognitionVersion});
+const rekognition = new AWS.Rekognition({ apiVersion: config.rekognitionVersion });
 
 async function throwExceptionIfUserAlreadyRegistered(registerModel) {
-  const loginResponse = await loginService.login(registerModel.image);
+  const loginResponse = { FaceMatches: [] };
+  try {
+    const loginResponse = await loginService.login(registerModel.image);
+  } catch (e) {
+
+  }
   if (loginResponse.FaceMatches.length > 0) {
     throw {
       status: HTTPStatus.FORBIDDEN,
