@@ -4,17 +4,22 @@ const AWS = require('./awsProvider');
 
 const rekognition = new AWS.Rekognition({ apiVersion: config.rekognitionVersion });
 
-module.exports = (req, res) => {
+const login = (image) => {
   const params = {
     CollectionId: config.collectionId,
     FaceMatchThreshold: config.faceMatchThreshold,
     Image: {
-      Bytes: base64ImageToAWSCompatibleFormat(req.body.image),
+      Bytes: base64ImageToAWSCompatibleFormat(image),
     },
     MaxFaces: 1,
   };
-  rekognition.searchFacesByImage(params, (err, data) => {
-    if (err) res.status(500).send(err).end();
-    else res.status(200).send(data).end();
-  });
+  return rekognition.searchFacesByImage(params).promise();
+  //   , (err, data) => {
+  //   if (err) res.status(500).send(err).end();
+  //   else res.status(200).send(data).end();
+  // });
+};
+
+module.exports = {
+  login,
 };
