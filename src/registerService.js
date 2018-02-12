@@ -11,7 +11,7 @@ const register = (registerModel) => {
       Bytes: base64ImageToAWSCompatibleFormat(registerModel.image),
     },
   };
-  rekognition.indexFaces(params).promise();// 16a70fc6-9ef0-4bfb-b484-cf5bb312b7de
+  return rekognition.indexFaces(params).promise();// 16a70fc6-9ef0-4bfb-b484-cf5bb312b7de
 };
 
 module.exports = {
