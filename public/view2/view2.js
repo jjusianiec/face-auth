@@ -35,14 +35,15 @@ angular.module('myApp.view2', ['ngRoute'])
         $scope.channel.video, 0, 0, $scope.channel.video.width,
         $scope.channel.video.height,
       );
+      toastr.info('Registering...');
       $http.post('/rest/register', {
         image: hiddenCanvas.toDataURL(),
         name: $scope.userName,
       })
         .then((data) => {
-
+          toastr.success('Registered!');
         }).catch((err) => {
-
+          toastr.error(err.data.message);
         });
       return ctx.getImageData(x, y, w, h);
     };

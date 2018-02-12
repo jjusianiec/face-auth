@@ -3,7 +3,7 @@ const base64ImageToAWSCompatibleFormat = require('./base64ImageToAWSCompatibleFo
 const AWS = require('./awsProvider');
 const userRepository = require('./userRepository');
 
-const rekognition = new AWS.Rekognition({ apiVersion: config.rekognitionVersion });
+const rekognition = new AWS.Rekognition({apiVersion: config.rekognitionVersion});
 
 const login = async (image) => {
   const params = {
@@ -21,7 +21,14 @@ const login = async (image) => {
       message: 'Could not find user with given face',
     };
   }
-  return userRepository.findByFaceId(searchByFaceResult.FaceMatches[0].Face.FaceId);
+  const user = await userRepository.findByFaceId(searchByFaceResult.FaceMatches[0].Face.FaceId);
+  if (user.Item) {
+    return user;
+  }
+  throw {
+    status: 404,
+    message: 'Could not find user with given face'
+  }
 };
 
 module.exports = {

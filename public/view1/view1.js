@@ -31,11 +31,12 @@ angular.module('myApp.view1', ['ngRoute'])
       hiddenCanvas.height = video.height;
       const ctx = hiddenCanvas.getContext('2d');
       ctx.drawImage(video, 0, 0, video.width, video.height);
+      toastr.info('Retrieving data...');
       $http.post('/rest/login', { image: hiddenCanvas.toDataURL() })
-        .then((data) => {
-
+        .then((response) => {
+          toastr.success(`Authenticated as: ${response.data.Item.name}`);
         }).catch((err) => {
-
+          toastr.error(err.data.message);
         });
       return ctx.getImageData(x, y, w, h);
     };
