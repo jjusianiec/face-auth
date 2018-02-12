@@ -8,13 +8,14 @@ const userRepository = require('./userRepository');
 const rekognition = new AWS.Rekognition({ apiVersion: config.rekognitionVersion });
 
 async function throwExceptionIfUserAlreadyRegistered(registerModel) {
-  const loginResponse = { FaceMatches: [] };
+  let loginResponse = { FaceMatches: [] };
   try {
-    const loginResponse = await loginService.login(registerModel.image);
+    loginResponse = await loginService.login(registerModel.image);
   } catch (e) {
-
+    if (e.status === 404) { return; }
+    console.log(e);
   }
-  if (loginResponse.FaceMatches.length > 0) {
+  if (loginResponse.Item) {
     throw {
       status: HTTPStatus.FORBIDDEN,
       message: 'User already registered!',

@@ -21,7 +21,7 @@ const login = async (image) => {
       message: 'Could not find user with given face',
     };
   }
-  return userRepository.findByFaceId(searchByFaceResult.FaceMatches[0].FaceId);
+  return userRepository.findByFaceId(searchByFaceResult.FaceMatches[0].Face.FaceId);
 };
 
 module.exports = {
