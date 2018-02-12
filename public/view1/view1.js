@@ -5,7 +5,7 @@ angular.module('myApp.view1', ['ngRoute'])
       controller: 'View1Ctrl',
     });
   }])
-  .controller('View1Ctrl', ['$scope', '$http', function ($scope, $http) {
+  .controller('View1Ctrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
     let video = null;
 
     $scope.onError = function (err) {
@@ -23,6 +23,10 @@ angular.module('myApp.view1', ['ngRoute'])
       videoHeight: 800,
       videoWidth: 600,
       video: null, // Will reference the video element on success
+    };
+
+    $scope.goToRegister = function () {
+      $location.path('/view2');
     };
 
     $scope.getVideoData = function (x, y, w, h) {

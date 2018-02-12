@@ -1,5 +1,5 @@
 <div>
-    <div class="video-container">
+    <div class="video-container-register">
         <br>
         Add new user
         <br>
@@ -9,9 +9,9 @@
                 channel="channel">
         </webcam>
         <br>
-        <input type="text" ng-model="userName">
+        <input required type="text" ng-model="userName">
         <br>
-        <button class="btn btn-success" ng-click="getVideoData(0, 0, 800, 600)">Register</button>
+        <button type="submit" class="btn btn-success" ng-click="getVideoData(0, 0, 800, 600)">Register</button>
     </div>
 
 </div>

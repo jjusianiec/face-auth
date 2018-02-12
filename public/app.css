@@ -1,9 +1,13 @@
 /* app css stylesheet */
-
+.video-container-register,
 .video-container {
   margin-left: 27%;
 }
 
 .video-container button {
+    margin-left: 14.5%;
+}
+
+.video-container-register button {
     margin-left: 25%;
 }
