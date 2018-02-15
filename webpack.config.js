@@ -1,6 +1,5 @@
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: ['babel-polyfill', './index.js'],
@@ -19,8 +18,5 @@ module.exports = {
         loaders: ['babel-loader'],
       },
     ],
-  },
-  plugins: [
-    new CopyWebpackPlugin([{ from: 'public', to: 'public' }]),
-  ],
+  }
 };

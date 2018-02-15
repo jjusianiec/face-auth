@@ -1,8 +1,7 @@
 const AWS = require('./awsProvider');
 
 const docClient = new AWS.DynamoDB.DocumentClient({
-  region: 'localhost',
-  endpoint: 'http://localhost:8000',
+  region: 'eu-west-1',
 });
 
 const tableName = 'user';

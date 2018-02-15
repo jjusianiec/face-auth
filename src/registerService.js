@@ -30,7 +30,7 @@ function registerFaceInCollection(registerModel) {
       Bytes: base64ImageToAWSCompatibleFormat(registerModel.image),
     },
   };
-  return rekognition.indexFaces(params).promise();// 16a70fc6-9ef0-4bfb-b484-cf5bb312b7de
+  return rekognition.indexFaces(params).promise();
 }
 
 const register = async (registerModel) => {
