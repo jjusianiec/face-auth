@@ -32,9 +32,12 @@ resources:
 
 plugins:
   - serverless-dynamodb-local
+  - serverless-webpack
   - serverless-offline
 
 custom:
   dynamodb:
     start:
       migrate: true
+  webpackIncludeModules:
+    packagePath: './package.json'

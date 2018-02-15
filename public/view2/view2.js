@@ -36,7 +36,7 @@ angular.module('myApp.view2', ['ngRoute'])
         $scope.channel.video.height,
       );
       toastr.info('Registering...');
-      $http.post('/rest/register', {
+      $http.post('/dev/rest/register', {
         image: hiddenCanvas.toDataURL(),
         name: $scope.userName,
       })
