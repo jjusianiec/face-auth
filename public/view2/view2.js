@@ -6,7 +6,7 @@ angular.module('myApp.view2', ['ngRoute'])
     });
   }])
 
-  .controller('View2Ctrl', ['$scope', '$http', function ($scope, $http) {
+  .controller('View2Ctrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
     let video = null;
 
     $scope.onError = function (err) {
@@ -27,6 +27,10 @@ angular.module('myApp.view2', ['ngRoute'])
     };
 
     $scope.getVideoData = function (x, y, w, h) {
+      if (!$scope.form.userName.$valid) {
+        toastr.error('User name is required!');
+        return;
+      }
       const hiddenCanvas = document.createElement('canvas');
       hiddenCanvas.width = $scope.channel.video.width;
       hiddenCanvas.height = $scope.channel.video.height;
@@ -46,5 +50,9 @@ angular.module('myApp.view2', ['ngRoute'])
           toastr.error(err.data.message);
         });
       return ctx.getImageData(x, y, w, h);
+    };
+
+    $scope.goToLogin = function () {
+      $location.path('/view1');
     };
   }]);

@@ -1,6 +1,8 @@
 <div>
     <div class="video-container-register">
         <br>
+        <button type="submit" class="btn btn-info" ng-click="goToLogin()">< Back to login page</button>
+        <br>
         Add new user
         <br>
         <webcam on-stream="onStream(stream)"
@@ -9,9 +11,12 @@
                 channel="channel">
         </webcam>
         <br>
-        <input required type="text" ng-model="userName">
-        <br>
-        <button type="submit" class="btn btn-success" ng-click="getVideoData(0, 0, 800, 600)">Register</button>
+        <form name="form">
+            Type your name: <input name="userName" required type="text" ng-model="userName">
+            <br>
+            <br>
+            <button type="submit" class="btn btn-success" ng-click="getVideoData(0, 0, 800, 600)">Register</button>
+        </form>
     </div>
 
 </div>
